@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block title %} BusApp {% endblock title %}
+
+{% block content %}
+<div id="spinner-box" class="spinner-border d-none" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+{% if data %}
+{% if data.success %}
+<p>
+    vs. {{data.header.gtfs_realtime_version}}
+</p>
+<div id="data-box">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Trip ID</th>
+            <th scope="col">Start time</th>
+            <th scope="col">Start date</th>
+            <th scope="col">Schedule</th>
+            <th scope="col">Route ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>{{ data.entity.0.trip_update.trip.trip_id }}</td>
+            <td>{{ data.entity.0.trip_update.trip.start_time }}</td>
+            <td>{{ data.entity.0.trip_update.trip.start_date }}</td>
+            <td>{{ data.entity.0.trip_update.trip.schedule_relationship }}</td>
+            <td>{{ data.entity.0.trip_update.trip.route_id }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {% else %}
+    <p><em>{{ data.message }}</em></p>
+    {% endif %}
+    {% endif %}
+</div>
+
+{% endblock content %}

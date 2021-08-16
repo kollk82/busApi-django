@@ -1,0 +1,5 @@
+/.idea
+/busApis/__pycache__
+/venv
+/db.sqlite3
+/static/jquery-3.6.0.min.js
